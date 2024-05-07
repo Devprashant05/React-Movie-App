@@ -2,19 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown";
 
-function HorizontalCard({ data,}) {
+function HorizontalCard({ data }) {
     return (
         <div className="w-full h-[40vh] p-5">
             <div className="w-full flex gap-5 overflow-y-hidden">
                 {data.map((item, index) => (
                     <div
                         key={index}
-                        className="min-w-[30%] shadow-xl bg-zinc-900 rounded-md"
+                        className="min-w-[30%] h-[50vh] shadow-xl bg-zinc-900 rounded-md"
                     >
                         <img
-                            className="w-full h-[48%] object-fill object-center"
+                            className="w-full h-[50%] object-fill object-top"
                             src={`https://image.tmdb.org/t/p/original/${
-                                item.backdrop_path || item.poster_path
+                                item.poster_path || item.backdrop_path
                             }`}
                             alt=""
                         />
@@ -26,7 +26,7 @@ function HorizontalCard({ data,}) {
                                     item.original_title}
                             </h1>
                             <p className="text-base">
-                                {item.overview.slice(0, 195)} ...
+                                {item.overview.slice(0, 150)} ...
                                 <span className="text-zinc-500 cursor-pointer">
                                     more
                                 </span>

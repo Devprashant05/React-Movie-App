@@ -12,7 +12,10 @@ function SideNav() {
                 <h1 className="text-white font-semibold mt-10 mb-5">
                     New Feeds
                 </h1>
-                <Link className="hover:bg-[#6556CD] hover:text-white duration-300 rounded-lg p-3">
+                <Link
+                    to="/trending"
+                    className="hover:bg-[#6556CD] hover:text-white duration-300 rounded-lg p-3"
+                >
                     <i className="ri-fire-fill mr-2"></i>Trending
                 </Link>
                 <Link className="hover:bg-[#6556CD] hover:text-white duration-300 rounded-lg p-3">

@@ -5,6 +5,7 @@ import axios from "../utils/axios";
 import Header from "./templates/Header";
 import HorizontalCard from "./templates/HorizontalCard";
 import Dropdown from "./templates/Dropdown";
+import Loader from "./templates/Loader";
 
 function Home() {
     document.title = "MovieApp | Home";
@@ -58,7 +59,7 @@ function Home() {
             </div>
         </>
     ) : (
-        <h1>Loading...</h1>
+        <Loader />
     );
 }
 
