@@ -5,31 +5,51 @@ import Dropdown from "./templates/Dropdown";
 import axios from "../utils/axios";
 import Cards from "./templates/Cards";
 import Loader from "./templates/Loader";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 function Trending() {
     const navigate = useNavigate();
     const [category, setCategory] = useState("all");
     const [duration, setDuration] = useState("day");
     const [trending, setTrending] = useState([]);
+    const [page, setPage] = useState(1);
+    const [hasMore, setHasMore] = useState(true);
 
     const getTrending = async () => {
         try {
             const { data } = await axios.get(
-                `/trending/${category}/${duration}`
+                `/trending/${category}/${duration}?page=${page}`
             );
-            setTrending(data.results);
+            // setTrending(data.results);
+            if (data.results.length > 0) {
+                setTrending((prev) => [...prev, ...data.results]);
+                setPage(page + 1);
+            } else {
+                setHasMore(false);
+            }
+            console.log(data);
         } catch (error) {
             console.log("Error : " + error);
         }
     };
 
-    useEffect(() => {
-        getTrending();
-    }, [trending, category]);
+    const refreshHandler = () => {
+        if (trending.length === 0) {
+            getTrending();
+        } else {
+            setPage(1);
+            setTrending([]);
+            getTrending();
+        }
+    };
 
-    return trending ? (
-        <div className="px-[3%] w-screen h-screen overflow-hidden overflow-y-auto ">
-            <div className="w-full flex items-center justify-center ">
+    useEffect(() => {
+        refreshHandler();
+    }, [category, duration]);
+
+    return trending.length > 0 ? (
+        <div className="w-full h-screen ">
+            <div className="px-[5%] w-full flex items-center justify-center ">
                 <h1 className="text-2xl font-semibold text-zinc-400">
                     <i
                         onClick={() => navigate(-1)}
@@ -56,7 +76,14 @@ function Trending() {
                 />
             </div>
 
-            <Cards data={trending} />
+            <InfiniteScroll
+                dataLength={trending.length}
+                next={getTrending}
+                hasMore={hasMore}
+                loader={<h1>Loading..</h1>}
+            >
+                <Cards data={trending} title={category} />
+            </InfiniteScroll>
         </div>
     ) : (
         <Loader />
