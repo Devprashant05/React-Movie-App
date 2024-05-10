@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Cards({ data, title }) {
+    console.log("====================================");
+    console.log(title);
+    console.log("====================================");
     return (
         <div className="flex flex-wrap w-full h-full justify-center mt-5 bg-[#1f1e24] ">
             {data.map((item, index) => (
@@ -25,7 +28,7 @@ function Cards({ data, title }) {
                     {item.vote_average && (
                         <div className="absolute right-[-14%] bottom-[30%] text-white text-xl font-semibold flex justify-center items-center w-[7vh] h-[7vh] rounded-full bg-yellow-600">
                             {(item.vote_average * 10).toFixed()} <sup>%</sup>
-                        </div>  
+                        </div>
                     )}
                 </Link>
             ))}

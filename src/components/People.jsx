@@ -67,7 +67,7 @@ function People() {
                 hasMore={hasMore}
                 loader={<h1>Loading..</h1>}
             >
-                <Cards data={people} title={category} />
+                <Cards data={people} title="people" />
             </InfiniteScroll>
         </div>
     ) : (

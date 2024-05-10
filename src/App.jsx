@@ -7,6 +7,9 @@ import Popular from "./components/Popular";
 import Movie from "./components/Movie";
 import TvShow from "./components/TvShow";
 import People from "./components/People";
+import MovieDetails from "./components/MovieDetails";
+import TvDetails from "./components/TvDetails";
+import PeopleDetails from "./components/PeopleDetails";
 
 function App() {
     return (
@@ -16,9 +19,24 @@ function App() {
                 <Route path="/l" element={<Loader />}></Route>
                 <Route path="/trending" element={<Trending />}></Route>
                 <Route path="/popular" element={<Popular />}></Route>
-                <Route path="/movie" element={<Movie />}></Route>
-                <Route path="/tvshow" element={<TvShow />}></Route>
-                <Route path="/people" element={<People />}></Route>
+                <Route path="/movie" element={<Movie />}>
+                    <Route
+                        path="/movie/details/:id"
+                        element={<MovieDetails />}
+                    ></Route>
+                </Route>
+                <Route path="/tvshow" element={<TvShow />}>
+                    <Route
+                        path="/tvshow/details/:id"
+                        element={<TvDetails />}
+                    ></Route>
+                </Route>
+                <Route path="/people" element={<People />}>
+                    <Route
+                        path="/people/details/:id"
+                        element={<PeopleDetails />}
+                    ></Route>
+                </Route>
             </Routes>
         </div>
     );
