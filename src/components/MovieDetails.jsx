@@ -1,14 +1,21 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncLoadMovie, removeMovie } from "../store/actions/movieActions";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+    Link,
+    Outlet,
+    useLocation,
+    useNavigate,
+    useParams,
+} from "react-router-dom";
 import Loader from "./templates/Loader";
+import HorizontalCard from "./templates/HorizontalCard";
 
 function MovieDetails() {
     const { pathname } = useLocation();
     const navigate = useNavigate();
     const { id } = useParams();
-    const { info } = useSelector((state) => state.movieReducer);
+    const { info } = useSelector((state) => state.movie);
     const dispatch = useDispatch();
     console.log(info);
     useEffect(() => {
@@ -16,7 +23,7 @@ function MovieDetails() {
         return () => {
             dispatch(removeMovie());
         };
-    }, []);
+    }, [id]);
     return info ? (
         <div
             style={{
@@ -25,7 +32,7 @@ function MovieDetails() {
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
             }}
-            className="w-full h-full px-[5%]"
+            className="w-full h-[160vh] px-[5%] relative"
         >
             {/* Part-1 Navigation */}
             <nav className="w-full h-[10vh] text-zinc-100 flex gap-10 items-center text-2xl">
@@ -53,9 +60,9 @@ function MovieDetails() {
             </nav>
 
             {/* Part-2 Poster and Details */}
-            <div className="w-full flex mt-4">
+            <div className="w-full flex">
                 <img
-                    className="h-[60vh] shadow-[8px_17px_38px_2px_rgba(0,0,0,0.5)] object-cover object-center"
+                    className="h-[65vh] shadow-[8px_17px_38px_2px_rgba(0,0,0,0.5)] object-cover object-center"
                     src={`https://image.tmdb.org/t/p/original/${
                         info.detail.poster_path || item.detail.backdrop_path
                     }`}
@@ -114,7 +121,7 @@ function MovieDetails() {
             </div>
 
             {/* Part-3 Platforms Available */}
-            <div className="w-[40%] flex flex-col gap-y-4 mt-10">
+            <div className="w-[55%] flex flex-col gap-y-5 mt-10 mb-5">
                 {info.watchProviders && info.watchProviders.flatrate && (
                     <div className="flex gap-x-5 items-center text-white">
                         <h1>Available on Platforms :-</h1>
@@ -157,6 +164,20 @@ function MovieDetails() {
                     </div>
                 )}
             </div>
+
+            {/* Part-4 Recommendations and Similar Stuff */}
+            <hr className="mt-10 mb-5 border-none h-[2px] bg-zinc-500" />
+            <h1 className="text-3xl font-semibold text-white">
+                Recommendations & Similar Stuff :-
+            </h1>
+            <HorizontalCard
+                data={
+                    info.recommendations.length > 0
+                        ? info.recommendations
+                        : info.similar
+                }
+            />
+            <Outlet />
         </div>
     ) : (
         <Loader />

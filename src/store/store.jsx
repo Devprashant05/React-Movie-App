@@ -5,8 +5,8 @@ import peopleSliceReducer from "./reducers/peopleSlice";
 
 export const store = configureStore({
     reducer: {
-        movieReducer: movieSliceReducer,
-        tvReducer: tvSliceReducer,
+        movie: movieSliceReducer,
+        tv: tvSliceReducer,
         peopleReducer: peopleSliceReducer,
     },
 });
