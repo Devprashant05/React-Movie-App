@@ -31,7 +31,7 @@ function SideNav() {
                     <i className="ri-movie-2-fill mr-2"></i>Movies
                 </Link>
                 <Link
-                    to="/tvshow"
+                    to="/tv"
                     className="hover:bg-[#6556CD] hover:text-white duration-300 rounded-lg p-3"
                 >
                     <i className="ri-tv-2-fill mr-2"></i>TV Shows

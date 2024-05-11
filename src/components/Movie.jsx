@@ -25,7 +25,6 @@ function Movie() {
             } else {
                 setHasMore(false);
             }
-            console.log(data);
         } catch (error) {
             console.log("Error : " + error);
         }

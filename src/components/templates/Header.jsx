@@ -22,7 +22,12 @@ function Header({ data }) {
             </h1>
             <p className="w-1/2 text-white mt-5 text-base">
                 {data.overview.slice(0, 180)} ...
-                <Link className="text-blue-500">more</Link>
+                <Link
+                    to={`/${data.media_type}/details/${data.id}`}
+                    className="text-blue-500"
+                >
+                    more
+                </Link>
             </p>
             <p className="text-white flex gap-2 mt-3">
                 <i className="text-yellow-600 ri-calendar-schedule-fill"></i>{" "}

@@ -7,7 +7,8 @@ function HorizontalCard({ data }) {
         <div className="w-full h-[40vh] p-5">
             <div className="w-full flex gap-5 overflow-y-hidden">
                 {data.map((item, index) => (
-                    <div
+                    <Link
+                        to={`/${item.media_type}/details/${item.id}`}
                         key={index}
                         className="min-w-[30%] h-[50vh] shadow-xl bg-zinc-900 rounded-md"
                     >
@@ -32,7 +33,7 @@ function HorizontalCard({ data }) {
                                 </span>
                             </p>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>
