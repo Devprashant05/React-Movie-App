@@ -87,7 +87,7 @@ function MovieDetails() {
                         <h1 className="font-semibold text-xl w-[60px] leading-6">
                             User Score
                         </h1>
-                        <h1>{info.detail.vote_average}</h1>
+                        <h1>{info.detail.release_date}</h1>
                         <h1>
                             {info.detail.genres
                                 .map((g, i) => g.name)
