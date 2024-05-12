@@ -7,6 +7,6 @@ export const store = configureStore({
     reducer: {
         movie: movieSliceReducer,
         tv: tvSliceReducer,
-        peopleReducer: peopleSliceReducer,
+        people: peopleSliceReducer,
     },
 });

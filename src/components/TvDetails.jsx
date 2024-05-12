@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import Loader from "./templates/Loader";
 import HorizontalCard from "./templates/HorizontalCard";
+import noImage from '/no_image.jpeg'
 
 function TvDetails() {
     const { pathname } = useLocation();
@@ -174,7 +175,7 @@ function TvDetails() {
                         <div className="w-[15vw] mr-[2%]">
                             <img
                                 className="h-[40vh] mr-5 min-w-[14vw] shadow-[8px_17px_38px_2px_rgba(0,0,0,0.5)] object-cover object-center"
-                                src={`https://image.tmdb.org/t/p/original/${s.poster_path}`}
+                                src={s.poster_path ? `https://image.tmdb.org/t/p/original/${s.poster_path}` : noImage}
                                 alt=""
                             />
                             <h1 className="text-2xl text-zinc-400 mt-3 font-semibold">

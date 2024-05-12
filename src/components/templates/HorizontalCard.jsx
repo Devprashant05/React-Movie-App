@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Dropdown from "./Dropdown";
+import noImage from "/no_image.jpeg";
 
 function HorizontalCard({ data }) {
     return (
@@ -15,9 +15,14 @@ function HorizontalCard({ data }) {
                         >
                             <img
                                 className="w-full h-[55%] object-fill"
-                                src={`https://image.tmdb.org/t/p/original/${
+                                src={
                                     item.poster_path || item.backdrop_path
-                                }`}
+                                        ? `https://image.tmdb.org/t/p/original/${
+                                              item.poster_path ||
+                                              item.backdrop_path
+                                          }`
+                                        : noImage
+                                }
                                 alt=""
                             />
                             <div className="text-white mt-1 p-2 h-[45%] overflow-y-auto">

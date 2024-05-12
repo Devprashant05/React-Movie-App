@@ -63,9 +63,7 @@ function MovieDetails() {
             <div className="w-full flex">
                 <img
                     className="h-[65vh] shadow-[8px_17px_38px_2px_rgba(0,0,0,0.5)] object-cover object-center"
-                    src={`https://image.tmdb.org/t/p/original/${
-                        info.detail.poster_path || item.detail.backdrop_path
-                    }`}
+                    src={`https://image.tmdb.org/t/p/original/${info.detail.poster_path}`}
                     alt=""
                 />
                 <div className="content ml-[5%] text-zinc-100">

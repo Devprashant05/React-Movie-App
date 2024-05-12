@@ -35,7 +35,10 @@ function Header({ data }) {
                 <i className="text-yellow-600 ri-album-fill"></i>{" "}
                 {data.media_type.toUpperCase()}
             </p>
-            <Link className="p-3 bg-[#6556CD] w-fit rounded-lg text-white mt-3 font-semibold">
+            <Link
+                to={`/${data.media_type}/details/${data.id}/trailer`}
+                className="p-3 bg-[#6556CD] w-fit rounded-lg text-white mt-3 font-semibold"
+            >
                 Watch Trailer
             </Link>
         </div>
